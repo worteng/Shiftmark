@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdo2dtqlk5tsk"]
+
+[ext_resource type="Script" path="res://Scripts/ball.gd" id="1_dep4o"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0stbj"]
+radius = 0.253255
+
+[sub_resource type="SphereMesh" id="SphereMesh_7m2w6"]
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["balls"]]
+script = ExtResource("1_dep4o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_0stbj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_7m2w6")
