@@ -158,6 +158,12 @@ func _ready():
 
 
 func _process(_delta):
+	if Input.get_connected_joypads().size() > 0:
+		var stick_x = Input.get_joy_axis(0, 2)  # Горизонталь
+		var stick_y = Input.get_joy_axis(0, 3)  # Вертикаль
+		print("Stick X: $stick_x, Y: $stick_y")
+	else:
+		print("Контроллер не подключен")
 	if pausing_enabled:
 		handle_pausing()
 
@@ -251,16 +257,19 @@ func handle_head_rotation():
 		HEAD.rotation_degrees.x -= mouseInput.y * mouse_sensitivity
 
 	if controller_support:
-		var controller_view_rotation = Input.get_vector(controller_controls.LOOK_DOWN, controller_controls.LOOK_UP, controller_controls.LOOK_RIGHT, controller_controls.LOOK_LEFT) * look_sensitivity # These are inverted because of the nature of 3D rotation.
-		if invert_camera_x_axis:
-			HEAD.rotation.x += controller_view_rotation.x * -1
-		else:
-			HEAD.rotation.x += controller_view_rotation.x
+		var controller_view_rotation = Input.get_vector(controller_controls.LOOK_DOWN, controller_controls.LOOK_UP, controller_controls.LOOK_RIGHT, controller_controls.LOOK_LEFT) * look_sensitivity
 
-		if invert_camera_y_axis:
-			HEAD.rotation.y += controller_view_rotation.y * -1
+		# Горизонтальное движение (X) влияет на рыскание (Y)
+		if invert_camera_x_axis:
+			HEAD.rotation.y += controller_view_rotation.x * -1
 		else:
-			HEAD.rotation.y += controller_view_rotation.y
+			HEAD.rotation.y += controller_view_rotation.x
+
+		# Вертикальное движение (Y) влияет на тангаж (X)
+		if invert_camera_y_axis:
+			HEAD.rotation.x += controller_view_rotation.y * -1
+		else:
+			HEAD.rotation.x += controller_view_rotation.ytion.y
 
 	mouseInput = Vector2(0,0)
 	HEAD.rotation.x = clamp(HEAD.rotation.x, deg_to_rad(-90), deg_to_rad(90))
@@ -427,6 +436,21 @@ func update_debug_menu_per_frame():
 	if !is_on_floor():
 		status += " in the air"
 	$UserInterface/DebugPanel.add_property("State", status, 4)
+
+	# Добавьте это для проверки действий контроллера
+	if controller_support:
+		var look_left_active = Input.is_action_pressed(controller_controls.LOOK_LEFT)
+		var look_right_active = Input.is_action_pressed(controller_controls.LOOK_RIGHT)
+		var look_up_active = Input.is_action_pressed(controller_controls.LOOK_UP)
+		var look_down_active = Input.is_action_pressed(controller_controls.LOOK_DOWN)
+		
+		$UserInterface/DebugPanel.add_property("Controller Active", "Yes", 5)
+		$UserInterface/DebugPanel.add_property("Look Left", str(look_left_active), 6)
+		$UserInterface/DebugPanel.add_property("Look Right", str(look_right_active), 7)
+		$UserInterface/DebugPanel.add_property("Look Up", str(look_up_active), 8)
+		$UserInterface/DebugPanel.add_property("Look Down", str(look_down_active), 9)
+	else:
+		$UserInterface/DebugPanel.add_property("Controller Active", "No", 5)
 
 
 func update_debug_menu_per_tick():

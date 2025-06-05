@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2edkjjuo5fsy"
 path.s3tc="res://.godot/imported/skyfinal.png-3898aa366f9ce1cf88a7de8dc6709788.s3tc.ctex"
+path.etc2="res://.godot/imported/skyfinal.png-3898aa366f9ce1cf88a7de8dc6709788.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/SkyPanorama/skyfinal.png"
-dest_files=["res://.godot/imported/skyfinal.png-3898aa366f9ce1cf88a7de8dc6709788.s3tc.ctex"]
+dest_files=["res://.godot/imported/skyfinal.png-3898aa366f9ce1cf88a7de8dc6709788.s3tc.ctex", "res://.godot/imported/skyfinal.png-3898aa366f9ce1cf88a7de8dc6709788.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwpib7xt0dgke"
 path.bptc="res://.godot/imported/bloem_field_sunrise_4k.hdr-23fdda77f8ded1da66aa11df987b6d15.bptc.ctex"
+path.astc="res://.godot/imported/bloem_field_sunrise_4k.hdr-23fdda77f8ded1da66aa11df987b6d15.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/SkyPanorama/bloem_field_sunrise_4k.hdr"
-dest_files=["res://.godot/imported/bloem_field_sunrise_4k.hdr-23fdda77f8ded1da66aa11df987b6d15.bptc.ctex"]
+dest_files=["res://.godot/imported/bloem_field_sunrise_4k.hdr-23fdda77f8ded1da66aa11df987b6d15.bptc.ctex", "res://.godot/imported/bloem_field_sunrise_4k.hdr-23fdda77f8ded1da66aa11df987b6d15.astc.ctex"]
 
 [params]
 

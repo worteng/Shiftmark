@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0cl8xgqqqu65"
 path.s3tc="res://.godot/imported/field-with-clouds.jpg-014fa3bd8d4c74517a60f61af4a833b9.s3tc.ctex"
+path.etc2="res://.godot/imported/field-with-clouds.jpg-014fa3bd8d4c74517a60f61af4a833b9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/SkyPanorama/field-with-clouds.jpg"
-dest_files=["res://.godot/imported/field-with-clouds.jpg-014fa3bd8d4c74517a60f61af4a833b9.s3tc.ctex"]
+dest_files=["res://.godot/imported/field-with-clouds.jpg-014fa3bd8d4c74517a60f61af4a833b9.s3tc.ctex", "res://.godot/imported/field-with-clouds.jpg-014fa3bd8d4c74517a60f61af4a833b9.etc2.ctex"]
 
 [params]
 
