@@ -5,7 +5,9 @@
 
 extends CharacterBody3D
 
-
+@export_group("Sounds")
+## Ссылка на звук шагов
+@export var footstep_sound: AudioStreamPlayer3D
 #region Character Export Group
 
 ## The settings for the character's movement and feel.
@@ -180,29 +182,37 @@ func _physics_process(delta): # Most things happen here.
 	handle_jumping()
 
 	var input_dir = Vector2.ZERO
-
 	if not immobile: # Immobility works by interrupting user input, so other forces can still be applied to the player
 		input_dir = Input.get_vector(controls.LEFT, controls.RIGHT, controls.FORWARD, controls.BACKWARD)
-
 	handle_movement(delta, input_dir)
-
 	handle_head_rotation()
 
 	# The player is not able to stand up if the ceiling is too low
 	low_ceiling = $CrouchCeilingDetection.is_colliding()
-
 	handle_state(input_dir)
+
 	if dynamic_fov: # This may be changed to an AnimationPlayer
 		update_camera_fov()
 
 	if view_bobbing:
 		play_headbob_animation(input_dir)
 
+	# --- Начало: Логика воспроизведения звука шагов ---
+	if is_on_floor() and input_dir != Vector2.ZERO and footstep_sound:
+		if state == "normal" or state == "sprinting":
+			if !footstep_sound.playing:
+				footstep_sound.play()
+		elif footstep_sound.playing:
+			footstep_sound.stop()
+	else:
+		if footstep_sound.playing:
+			footstep_sound.stop()
+	# --- Конец: Логика воспроизведения звука шагов ---
+
 	if jump_animation:
 		play_jump_animation()
 
 	update_debug_menu_per_tick()
-
 	was_on_floor = is_on_floor() # This must always be at the end of physics_process
 
 #endregion
