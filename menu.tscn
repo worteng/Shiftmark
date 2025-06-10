@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dekpwfgmn07vd"]
+[gd_scene load_steps=3 format=3 uid="uid://dekpwfgmn07vd"]
 
 [ext_resource type="VideoStream" path="res://Video/menu.ogv" id="1_t27j5"]
+[ext_resource type="Script" path="res://Scripts/menu_button.gd" id="2_3k6ct"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -20,4 +21,32 @@ grow_vertical = 2
 stream = ExtResource("1_t27j5")
 autoplay = true
 expand = true
+loop = true
 metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -36.5
+offset_right = 310.0
+offset_bottom = 36.5
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Новая игра"
+script = ExtResource("2_3k6ct")
+
+[node name="MenuButton2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Настройки"
+
+[node name="MenuButton3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Выход в систему"
+
+[connection signal="pressed" from="VBoxContainer/MenuButton" to="VBoxContainer/MenuButton" method="_on_button_start_pressed"]
