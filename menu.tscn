@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dekpwfgmn07vd"]
+
+[ext_resource type="VideoStream" path="res://Video/menu.ogv" id="1_t27j5"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_t27j5")
+autoplay = true
+expand = true
+metadata/_edit_use_anchors_ = true

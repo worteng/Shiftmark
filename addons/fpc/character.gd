@@ -7,7 +7,8 @@ extends CharacterBody3D
 
 @export_group("Sounds")
 ## Ссылка на звук шагов
-@export var footstep_sound: AudioStreamPlayer3D
+@onready var footstep_sound: AudioStreamPlayer3D = $FootstepSound
+
 #region Character Export Group
 
 ## The settings for the character's movement and feel.
@@ -196,19 +197,25 @@ func _physics_process(delta): # Most things happen here.
 
 	if view_bobbing:
 		play_headbob_animation(input_dir)
+	var is_moving := is_on_floor() and input_dir != Vector2.ZERO
 
-	# --- Начало: Логика воспроизведения звука шагов ---
-	if is_on_floor() and input_dir != Vector2.ZERO and footstep_sound:
-		if state == "normal" or state == "sprinting":
-			if !footstep_sound.playing:
-				footstep_sound.play()
-		elif footstep_sound.playing:
-			footstep_sound.stop()
+	# --- Воспроизведение звука шагов ---
+	if is_moving and state in ["normal", "sprinting", "crouching"]:
+		if not footstep_sound.playing:
+			footstep_sound.play()
 	else:
 		if footstep_sound.playing:
 			footstep_sound.stop()
-	# --- Конец: Логика воспроизведения звука шагов ---
 
+	# --- Регулировка pitch в зависимости от состояния ---
+	if footstep_sound.playing:
+		match state:
+			"crouching":
+				footstep_sound.pitch_scale = 0.5
+			"sprinting":
+				footstep_sound.pitch_scale = 2.0
+			_:
+				footstep_sound.pitch_scale = 1.0
 	if jump_animation:
 		play_jump_animation()
 
