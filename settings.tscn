@@ -1,0 +1,153 @@
+[gd_scene load_steps=3 format=3 uid="uid://4f8b5x3r2fdr"]
+
+[ext_resource type="Script" path="res://Scripts/settings.gd" id="1_lgbio"]
+[ext_resource type="Script" path="res://Scripts/settings_button.gd" id="2_mbsw8"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lgbio")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 92.0
+offset_bottom = 254.0
+
+[node name="OptionBVHQuality" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "low"
+popup/item_0/id = 0
+popup/item_1/text = "medium"
+popup/item_1/id = 1
+popup/item_2/text = "high"
+popup/item_2/id = 2
+
+[node name="OptionRenderingMethod" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "forward_plus"
+popup/item_0/id = 0
+popup/item_1/text = "clustered"
+popup/item_1/id = 1
+popup/item_2/text = "mobile"
+popup/item_2/id = 2
+
+[node name="OptionScaleMode" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "fsr"
+popup/item_0/id = 0
+popup/item_1/text = "bilinear"
+popup/item_1/id = 1
+popup/item_2/text = "nearest"
+popup/item_2/id = 2
+popup/item_3/text = "fsr2"
+popup/item_3/id = 3
+
+[node name="SpinOcclusionRays" type="SpinBox" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SpinMSAA3D" type="SpinBox" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckNearestMipmap" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckTAA" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SliderAnisoLevel" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SliderMipmapBias" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SliderScale" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 7.0
+offset_right = 384.0
+offset_bottom = 281.0
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "OptionBVHQuality"
+
+[node name="Label6" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "OptionRenderingMethod"
+
+[node name="Label9" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "OptionScaleMode"
+
+[node name="Label2" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "SpinOcclusionRays"
+
+[node name="Label7" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "SpinMSAA3D"
+
+[node name="Label3" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "CheckNearestMipmap"
+
+[node name="Label8" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "CheckTAA"
+
+[node name="Label4" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "SliderAnisoLevel"
+
+[node name="Label5" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "SliderMipmapBias"
+
+[node name="Label10" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "SliderScale"
+
+[node name="ButtonApply" type="Button" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 292.0
+offset_right = 150.0
+offset_bottom = 328.0
+text = "	Применить настройки"
+
+[node name="ButtonSave" type="Button" parent="."]
+offset_left = 10.0
+offset_top = 338.0
+offset_right = 149.0
+offset_bottom = 364.0
+text = "	Сохранить настройки в user://"
+
+[node name="ButtonLoad" type="Button" parent="."]
+offset_left = 6.0
+offset_top = 384.0
+offset_right = 149.0
+offset_bottom = 411.0
+text = "	Загрузить сохранённые"
+
+[node name="MenuButton" type="Button" parent="."]
+offset_left = 21.0
+offset_top = 426.0
+offset_right = 302.0
+offset_bottom = 457.0
+text = "Назад в меню"
+script = ExtResource("2_mbsw8")
+
+[connection signal="pressed" from="ButtonApply" to="." method="apply_settings"]
+[connection signal="pressed" from="ButtonSave" to="." method="save_settings"]
+[connection signal="pressed" from="ButtonLoad" to="." method="load_settings"]
+[connection signal="pressed" from="MenuButton" to="MenuButton" method="_on_button_start_pressed"]
