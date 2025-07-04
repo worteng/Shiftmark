@@ -91,7 +91,7 @@ func _process(_delta):
 		var stick_y = Input.get_joy_axis(0, 3)
 		print("Stick X: $stick_x, Y: $stick_y")
 	else:
-		print("Контроллер не подключен")
+		pass
 	if pausing_enabled:
 		handle_pausing()
 	update_debug_menu_per_frame()

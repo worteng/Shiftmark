@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://4f8b5x3r2fdr"]
+[gd_scene load_steps=3 format=3 uid="uid://ch0hy7ahjwxmo"]
 
 [ext_resource type="Script" path="res://Scripts/settings.gd" id="1_lgbio"]
 [ext_resource type="Script" path="res://Scripts/settings_button.gd" id="2_mbsw8"]
@@ -126,6 +126,7 @@ offset_bottom = 328.0
 text = "	Применить настройки"
 
 [node name="ButtonSave" type="Button" parent="."]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 338.0
 offset_right = 149.0
@@ -133,6 +134,7 @@ offset_bottom = 364.0
 text = "	Сохранить настройки в user://"
 
 [node name="ButtonLoad" type="Button" parent="."]
+layout_mode = 0
 offset_left = 6.0
 offset_top = 384.0
 offset_right = 149.0
@@ -140,6 +142,7 @@ offset_bottom = 411.0
 text = "	Загрузить сохранённые"
 
 [node name="MenuButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 426.0
 offset_right = 302.0
