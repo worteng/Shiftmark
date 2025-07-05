@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dekpwfgmn07vd"]
+[gd_scene load_steps=5 format=3 uid="uid://dekpwfgmn07vd"]
 
 [ext_resource type="VideoStream" path="res://Video/menu.ogv" id="1_t27j5"]
 [ext_resource type="Script" path="res://Scripts/menu_button.gd" id="2_3k6ct"]
 [ext_resource type="Script" path="res://Scripts/settings_button1.gd" id="3_x7no8"]
+[ext_resource type="Script" path="res://Scripts/settings_button2.gd" id="4_4hy44"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -51,6 +52,8 @@ script = ExtResource("3_x7no8")
 [node name="MenuButton3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Выход в систему"
+script = ExtResource("4_4hy44")
 
 [connection signal="pressed" from="VBoxContainer/MenuButton" to="VBoxContainer/MenuButton" method="_on_button_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/MenuButton2" to="VBoxContainer/MenuButton2" method="_on_button_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuButton3" to="VBoxContainer/MenuButton3" method="_on_button_start_pressed"]

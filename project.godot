@@ -13,12 +13,20 @@ config_version=5
 config/name="shiftmark"
 run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Assets/Startup.png"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=7000
 
 [autoload]
 
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 DebugDraw="*res://Scripts/DebugDraw.gd"
+SignalBus="*res://Scripts/SignalBus.gd"
+
+[display]
+
+window/size/mode=4
 
 [editor_plugins]
 
