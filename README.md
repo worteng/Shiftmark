@@ -19,6 +19,6 @@
 
 1. **Форкните** этот репозиторий и создайте свою ветку:
    ```bash
-   git clone https://github.com/ваш-профиль/Shiftmark.git
+   git clone https://github.com/worteng/Shiftmark.git
    cd Shiftmark
    git checkout -b my-feature
